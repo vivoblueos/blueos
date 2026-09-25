@@ -30,6 +30,7 @@ pub mod pwd;
 pub mod rmdir;
 pub mod touch;
 pub mod truncate;
+pub mod ui;
 pub mod umount;
 
 extern crate phf;
@@ -101,6 +102,10 @@ pub static COMMANDS: Map<&'static str, CommandInfo> = phf_map! {
     "truncate" => CommandInfo {
         handler: truncate::command,
         description: "Shrink or extend the size of each file, usage: truncate <file> <size>",
+    },
+    "ui" => CommandInfo {
+        handler: ui::command,
+        description: "Launch a simple text user interface, usage: ui [once|help]",
     },
     "mount" => CommandInfo {
         handler: mount::command,
